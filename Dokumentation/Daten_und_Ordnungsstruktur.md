@@ -3,7 +3,6 @@
 Da die mp3 Datein (Tracks) nicht direkt in Github Ordnern gespeichert werden können, muss hierfür ein Workaround gefunden werden.
 Die mp3 Datein werden demnach in einem privaten One Drive Ordner gespeichert und die Samples in dem Repo. Die Ordnerstruktur und Namens Konventionen sind so gewählt, dass die Samples eindeutig ja nach Disassembling Strategie und Sampling Size den Tracks zugeordnet werden können   .
 
-
 ## Pfadstruktur
 <pre><code>
 tracks/interpret/track_name/disassembling_strategy/sampling_size/sample_name.mp3
@@ -43,3 +42,7 @@ tracks
           ...
     
 </code></pre>
+
+
+## Samples und Tensoren
+werden beide mit dem gleichen Namen (aber unterschiedliche Dateiendung) in dem selben Ordner abgelegt.
