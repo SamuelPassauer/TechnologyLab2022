@@ -7,6 +7,7 @@ Die folgende Beschreibung soll einen Überblick über die Anforderungen liefern,
 
 2. Das Zielsystem verfügt über eine **Audio Komponente**.
     1. Die Komponente kann mit Audio-Files (Tracks) im mp3 Format umgehen.
+    xxxx
     2. Die Tracks können durch die Komponente nach einer wählbaren Strategie in Samples (Chunks des Tracks) zerlegt werden.
     3. Für die entstehenden Samples sind geeignete Namen zu verwenden
     4. Für die entstehenden Samples sind ggf. weitere Metdadaten zu verwalten.
