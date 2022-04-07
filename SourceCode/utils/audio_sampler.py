@@ -30,6 +30,7 @@ class AudioSampler:
         if disassembling_strategy == 'equidistant':
             sample_length = track_length/sampling_size * 1000
             start_cut = 0
+
             for cut in range(sampling_size):
                 end_cut = start_cut + sample_length
                 sample = track[start_cut : end_cut]
@@ -40,6 +41,11 @@ class AudioSampler:
         elif disassembling_strategy == 'stochastic':
             # Todo
             pass
+
+        try:
+            os.makedirs(self.path+samples_folder)
+        except OSError:
+            print("[ERROR] Creation of the directory %s failed" %samples_folder)
         
         counter = 1
         for sample in sample_list:
@@ -50,8 +56,7 @@ class AudioSampler:
             elif len(str(counter)) == 3:
                 position = str(counter)
             
-            sample.export(samples_folder+'/sample_'+position+'.mp3',format="mp3")
-            # Todo: Export with folder name creation not working yet
+            sample.export(self.path+samples_folder+'/sample_'+position+'.mp3',format="mp3")
             counter+=1
         
 
@@ -68,6 +73,8 @@ class AudioSampler:
             if is_existing == False:
                 track_loaded = self.load_track(track_path)
                 self.disassemble_track(track_loaded, disassembling_strategy, sampling_size, samples_folder)
+            else:
+                print("[INFO] Samples for this track, disassembling stretegy and samplinz size already exist.")
 
         print('Disassembling finished.')
  
