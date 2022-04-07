@@ -34,13 +34,16 @@ class Sandbox:
         print()
         #ToDo Prevent wrong input
         disassembling_strategy_selection = int(input("Please type in 1 for stochastic and 2 for equidistant dissasembling strategy: "))
+        print()
         disassembling_strategy_list = {1:"stochastic", 2:"equidistant"}
         disassembling_strategy = disassembling_strategy_list[disassembling_strategy_selection]
         
         #ToDo Prevent wrong input
         sampling_size = int(input("Please type in the sampling size: "))
+        print()
 
         track_selection = input("Please type in the track you want to disassemble: ")
+        print()
         track_selection_list = []
 
         while track_selection != "exit":
