@@ -22,15 +22,17 @@ Die folgende Beschreibung soll einen Überblick über die Anforderungen liefern,
 
 4. Das Zielsystem verfügt über eine **Machine Learning Komponente**.
     1. Die Komponente verfügt über ein geeignetes Neuronales Netz, welches die Sequenzen von Musik wahrnimmt und über eine geeignete Reihenfolge von Samples entscheiden kann.
-    2. Das Neuronale Netz wird mit Tensorflow umgesetzt.
-    3. Für das Lernen sind Ansätze wie LSTM, Recurrent Neural Networks (RNN), Attention etc. in Betracht zu ziehen.
-    4. Es können Ansätze wie Reinforcement Learning eingesetzt werden.
-    5. Die Komponente bezieht weitere Eigenschaften des Audiomaterials (Lautstärke, Tempo, Spektrum, etc.) ein.
-    6. Die Komponente bewertet ob zwei Samples konkateniert werden können und meldet dies an die Audio Komponente.
-    7. Die Komponente leitet aus Samples Tracks ab und speichert diese.
-    8. Die Komponente ermöglicht das Erstellen neuer Tracks.
+    2. Das Neuronale Netz bewertet dabei im Kern ob zwei Samples konkateniert werden können. 
+    3. Das Neuronale Netz wird mit Tensorflow umgesetzt.
+    4. Für das Lernen sind Ansätze wie LSTM, Recurrent Neural Networks (RNN), Attention etc. in Betracht zu ziehen.
+    5. Es können Ansätze wie Reinforcement Learning eingesetzt werden.
+    6. Die Komponente bezieht weitere Eigenschaften des Audiomaterials (Lautstärke, Tempo, Spektrum, etc.) ein.    
+    7. Die Komponente ermöglicht durch ihre Funktionalität das Erstellen neuer Tracks.
+    8. Die Komponente meldet an die Audio Komponente ob zwei Samples konkateniert werden können.
 
 5. Für Training, Test und Betrieb des Systems werden geeignete **Daten** bereitgestellt.
+
+6. Das Zielsystem soll eine Sandbox für Experimente zur Beantwortung der Forschungsfragen bereitstellen.
 
 ### Entwicklung und Betrieb
 1. Alle Entwicklungsschritte werden mithilfe von **GitHub** dokumentiert.
