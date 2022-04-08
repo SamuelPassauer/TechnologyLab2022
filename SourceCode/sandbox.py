@@ -49,6 +49,7 @@ class Sandbox:
         while track_selection != "exit":
             track_selection_list.append(track_selection)
             track_selection = input("Another track to add? If yes, type in your track, if no type exit. ")
+            print()
 
         self.audio_sampler.disassemble_tracks(disassembling_strategy, sampling_size, track_selection_list)
 
