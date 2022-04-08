@@ -24,7 +24,7 @@ class AudioSampler:
                 track_loaded = self.load_track(track_path)
                 self.disassemble_track(track_loaded, disassembling_strategy, sampling_size, samples_folder)
             else:
-                print("[INFO] Samples for this track, disassembling stretegy and samplinz size already exist.")
+                print("[INFO] Samples for the track {} with a {} disassembling strategy and a sampling size of {} already exist.".format(track_path, disassembling_strategy, str(sampling_size)))
 
         print('[INFO] Disassembling finished.')
     
@@ -67,8 +67,12 @@ class AudioSampler:
             elif len(str(counter)) == 3:
                 position = str(counter)
             
-            sample.export(self.path+samples_folder+'/sample_'+position+'.mp3',format="mp3")
+            components = samples_folder.split('/')
+            name = components[2]+'_'+components[3] + '_' + disassembling_strategy[0] + '_' + str(sampling_size) + '_'+position+'.mp3'
+            sample.export(self.path+samples_folder+'/sample_'+name,format="mp3")
             counter+=1
+
+        # Todo tensor creation aufrufen und metadaten erstellen
         
     def disassemble_equidistant(self, track, sampling_size) -> None:
         sample_list = []
@@ -86,7 +90,6 @@ class AudioSampler:
 
 
     def disassemble_stochastic(self, track, sampling_size) -> None:
-        # Todo: bei 10 kommen nur 9 sinnvolle raus
         # Todo: auslagern
 
         # min und max range bestimmen
@@ -100,7 +103,6 @@ class AudioSampler:
         random_numbers = []
         for x in range(sampling_size):
             rand_num = random.randint(min_range, max_range)
-            print('Rand Num ', rand_num)
             random_numbers.append(rand_num)
 
         # umrechnen in prozent und sample länge
@@ -115,7 +117,6 @@ class AudioSampler:
         # cuten
         cut_start = 0
         for length in sample_length:
-            print('Length :',length)
             cut_end = cut_start + length
             sample = track[cut_start:cut_end]
             sample_list.append(sample)
@@ -124,8 +125,12 @@ class AudioSampler:
         return sample_list
 
 
-    def save_sample(self, sample) -> None:
+    def create_metadata(self) -> None:
         # ToDo Metadaten als csv
+        pass
+
+    def create_tensor() -> None:
+        # Todo
         pass
 
 
