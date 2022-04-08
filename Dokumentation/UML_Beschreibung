@@ -1,0 +1,301 @@
+#   Überblick und Beschreibung der UML Diagramme von Team 1
+In diesem Kapitel werden alle UML Diagramme von Team 1 dargestellt und beschrieben. 
+Es werden drei Arten von UML Diagrammen verwendet. 
+Zuerst werden Use Case Diagramme zur Abbildung der unterschiedlichen Challenges dargestellt. 
+Darauffolgend zeigt ein Sequenzdiagramm das Verhalten des Systems. 
+Im letzten Kapitel wird das Klassendiagramm dargestellt und beschrieben.
+##  Challenge 1
+Zur Herstellung von Trainingsdaten eines Neuronalen Netzes müssen Musikstücke in beliebige (gleich große als auch unterschiedlich große) Samples zerlegbar sein, um als synthetische Trainingsdaten nutzbar zu sein. 
+Hierzu ist eine geeignete Infrastruktur zu schaffen. Andererseits müssen diese Samples als Trainingsdaten einem Neuronalen Netz zuführbar sein, das somit die Zusammengehörigkeit von Musik-Samples erlernen kann.
+
+| Use Case Name | Zerlegart auswählen |
+| ----------- | ----------- |
+| Ziel | Lisa entscheidet sich zwischen einer stochastischen und äquidistanten Zerlegart für einen Track.  |
+| Akteure | Lisa |
+| Vorbedingung | Keine Vorbedingung. |
+| Nachbedingung | 1. Die Zerlegart ist ausgewählt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt zwischen einer  stochastischen und äquidistanten Zerlegart. <br> 2. Lisa wählt die Länge der Samples aus. <br> |
+
+
+| Use Case Name | Track*s auswählen |
+| ----------- | ----------- |
+| Ziel | Lisa wählt einen Track. |
+| Akteure | Lisa |
+| Vorbedingung | Keine Vorbedingung. |
+| Nachbedingung | 1. Lisa hat einen Track ausgewählt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt einen Track. |
+
+
+| Use Case Name | Sample Erstellung starten |
+| ----------- | ----------- |
+| Ziel | Lisa zerlegt einen von ihr gewählten Track in einer von ihr vorgegebenen Zerlegart in verschiedene Samples. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Lisa hat eine Zerlegart ausgewählt. <br> 2. Lisa hat einen Track ausgewählt. |
+| Nachbedingung | 1. Die Zerlegung der Samples wird gestartet. |
+| Nachbedingung im Sonderfall | 1. Die Kombination Track / Zerlegart existiert bereits. Die Sample Erstellung wird nicht durchgeführt. |
+| Normalablauf | 1. Zerlegart und Track*s sind von Lisa ausgewählt. <br> 2. Die Sample Erstellung wird von Lisa gestartet. <br> 3. Es wird geprüft, ob bereits Samples des gewählten Tracks in dieser Zerlegart erstellt wurden. |
+
+
+| Use Case Name | Track*s in Samples zerlegen |
+| ---------- | ----------- |
+| Ziel | Der von Lisa gewählte Track wird in Samples zerlegt.  |
+| Akteure | |
+| Vorbedingung | 1. Die Sample Erstellung wurde gestartet. <br> 2. Es existieren noch keine Samples mit der Track / Zerlegart Kombination. |
+| Nachbedingung | 1. Die Samples sind zerlegt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Der gewählte Track wird nach angegebener Zerlegart in Samples zerlegt. <br> 2. Die Samples werden  |
+
+
+| Use Case Name | Samples zu Tensoren compilen |
+| ----------- | ----------- |
+| Ziel | Die Samples werden zur weiteren Verarbeitung in Tensoren kompiliert. |
+| Akteure | |
+| Vorbedingung | 1. Der Track wurde in Samples zerlegt. |
+| Nachbedingung | 1. Die Samples sind zu Tensoren kompiliert. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die Samples werden in Tensoren abgebildet und kompiliert. |
+
+| Use Case Name | Tensoren speichern |
+| ----------- | ----------- |
+| Ziel | Die Samples werden im Tensoren-Format gespeichert. |
+| Akteure |  |
+| Vorbedingung | 1. Die Samples sind ins Tensoren-Format kompiliert. |
+| Nachbedingung | 1. Die Tensoren sind gespeichert. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf |  |
+
+| Use Case Name | Samples speichern |
+| ----------- | ----------- |
+| Ziel | Die Samples sind gespeichert und können für eine spätere Anwendung erneut verwendet werden |
+| Akteure |  |
+| Vorbedingung | 1. Der Track wurde in Samples zerlegt. |
+| Nachbedingung | 1. Die Samples sind in einem Ordner gespeichert. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die zerlegten Samples werden durch Lisa geeignet benannt. <br> 2. Die Samples werden nach ihrer Zerlegung in einem Ordner gespeichert. |
+
+| Use Case Name | Metadaten erstellen |
+| ----------- | ----------- |
+| Ziel | Die Samples werden mit Metadaten angereichert. |
+| Akteure | |
+| Vorbedingung | 1. Die Samples sind gespeichert. |
+| Nachbedingung | 1. Die Metadaten sind erstellt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die Metadaten zu den Samples werden gespeichert. <br>  2. Die Metadaten werden mit den Samples verknüpft. |
+
+##  Challenge 2
+
+| Use Case Name | Zerlegart auswählen |
+| ----------- | ----------- |
+| Ziel | Lisa entscheidet sich zwischen einer stochastischen und äquidistanten Zerlegart für einen Track.  |
+| Akteure |  Lisa |
+| Vorbedingung |  |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt zwischen einer  stochastischen und äquidistanten Zerlegart. <br> 2. Lisa wählt die Länge der Samples aus. <br>  |
+
+| Use Case Name | Trainingsdaten auswählen |
+| ----------- | ----------- |
+| Ziel | Die Trainingsdaten sind ausgewählt. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Samples zum gewählten Track sind gespeichert. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt alle Samples des Tracks als Trainingsdaten aus.  |
+
+| Use Case Name | Testdaten auswählen |
+| ----------- | ----------- |
+| Ziel | Die Testdaten sind ausgewählt |
+| Akteure | Lisa |
+| Vorbedingung | 1. Der Track ist ausgewählt. <br> 2. Die Trainingsdaten sind ausgewählt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt die Testdaten aus. Diese entsprechen den Trainingsdaten.  |
+
+| Use Case Name | Netztopologie festlegen |
+| ----------- | ----------- |
+| Ziel | Die Netztopologie für das ML Modell ist festgelegt. |
+| Akteure | Lisa |
+| Vorbedingung |  |
+| Nachbedingung | 1. Das Forschungsdesign ist aufgesetzt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt die Struktur des Neuronalen Netzes aus. |
+
+| Use Case Name | Forschungsdesign aufsetzen |
+| ----------- | ----------- |
+| Ziel | Lisa setzt ein geeignetes Test Design auf, um eine Hypothese zu prüfen. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Samples sind erstellt und ausgewählt <br> 2. Die Trainingsdaten sind ausgewählt. <br> 3. Die Testdaten sind ausgewählt. <br> 4. Die Netztopologie ist festgelegt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf |  |
+
+| Use Case Name | Training starten |
+| ----------- | ----------- |
+| Ziel | Das Training des ML Modells wird durchgeführt.. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das Forschungsdesign ist aufgesetzt <br> 2. Die Trainingsdaten sind eingelesen <br> 3. Die Hyperparameter sind festgelegt. |
+| Nachbedingung | 1. Das Training  ist erfolgreich durchgeführt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Das ML Modell wird entsprechend des Forschungsdesigns konfiguriert. <br> 2. Die Hyperparameter werden im ML Modell eingegeben. <br> 3. Das Training wird gestartet. |
+
+| Use Case Name | Trainingsdaten einlesen |
+| ----------- | ----------- |
+| Ziel | Die Trainingsdaten für das ML Modell sind eingelesen. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das Forschungsdesign ist aufgesetzt. |
+| Nachbedingung | 1. Die Trainingsdaten sind in das ML Modell eingelesen. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die zuvor ausgewählten Trainingsdaten werden in das ML Modell eingelesen.  |
+
+| Use Case Name | Hyperparameter festlegen |
+| ----------- | ----------- |
+| Ziel | Lisa wählt die Hyperparameter für das ML Modell |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Trainings- und Testdaten sind ausgewählt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Der Trainings- und Testdatensplit wird von Lisa festgelegt. <br> 2. Lisa legt die Lernrate des ML Modells fest. <br> 3. Lisa legt die Anzahl der Durchläufe des ML Modells fest. <br> 4.   |
+
+| Use Case Name | Resampling bekannter Samples |
+| ----------- | ----------- |
+| Ziel | Der angegebene Track wird durch das ML Modell geresamplet. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das Training des ML Modells ist von Lisa erfolgreich durchgeführt worden. |
+| Nachbedingung | 1. Die Testdaten sind ausgewählt. <br> 2. Das ML Modell ist trainiert. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die als Testdaten ausgewählten Samples werden in das ML Modell gegeben. <br> 2. Das ML Modell resampelt die Testdaten. <br> |
+
+| Use Case Name | Resampling starten |
+| ----------- | ----------- |
+| Ziel | Der Track wird resampelt. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das ML Modell ist trainiert. <br> 2. Die Testdaten sind eingelesen. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Das ML Modell wird gestartet. <br> 2. Die Samples werden neu sortiert.  |
+
+| Use Case Name | Testdaten einlesen |
+| ----------- | ----------- |
+| Ziel | Die Testdaten sind eingelesen. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Testdaten sind ausgewählt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die ausgewählten Testdaten werden in das ML Modell eingelesen. |
+
+| Use Case Name | Ergebnisse mit Track vergleichen |
+| ----------- | ----------- |
+| Ziel | Lisa vergleicht den ausgewählten Track mit den resampelten Trainingsdaten. Die Evaluation ergibt, dass der Track erfolgreich resampelt wurde. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das ML Modell hat das Resampling beendet. |
+| Nachbedingung | 1. Der Track wurde erfolgreich geresamplet. |
+| Nachbedingung im Sonderfall | 1. Das Forschungsdesign muss angepasst werden. |
+| Normalablauf | 1. Lisa erhält die Ergebnisse des Resamplings. <br> 2. Lisa evaluiert die Ergebnisse des Resamplings. <br> 3. Lisa fällt die Entscheidung, ob das ML Modell den Track erfolgreich resampelt hat. |
+
+##  Challenge 3
+
+| Use Case Name | Zerlegart auswählen |
+| ----------- | ----------- |
+| Ziel | Lisa entscheidet sich zwischen einer stochastischen und äquidistanten Zerlegart für einen Track.  |
+| Akteure |  Lisa |
+| Vorbedingung |  |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt zwischen einer  stochastischen und äquidistanten Zerlegart. <br> 2. Lisa wählt die Länge der Samples aus. <br>  |
+
+| Use Case Name | Trainingsdaten auswählen |
+| ----------- | ----------- |
+| Ziel | Die Trainingsdaten sind ausgewählt. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Samples zum gewählten Track sind gespeichert. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt alle Samples des Tracks als Trainingsdaten aus.  |
+
+| Use Case Name | Testdaten auswählen |
+| ----------- | ----------- |
+| Ziel | Die Testdaten sind ausgewählt |
+| Akteure | Lisa |
+| Vorbedingung | 1. Der Track ist ausgewählt.|
+| Nachbedingung | 1. Die Testdaten sind ausgewählt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt passende Samples aus. <br> 2. Lisa wählt unpassende Samples aus. <br> Lisa speichert die Testdaten, die aus passenden und unpassenden Samples zusammengesetzt sind.  |
+
+| Use Case Name | Netztopologie festlegen |
+| ----------- | ----------- |
+| Ziel | Die Netztopologie für das ML Modell ist festgelegt. |
+| Akteure | Lisa |
+| Vorbedingung |  |
+| Nachbedingung | 1. Das Forschungsdesign ist aufgesetzt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Lisa wählt die Struktur des Neuronalen Netzes aus. |
+
+| Use Case Name | Forschungsdesign aufsetzen |
+| ----------- | ----------- |
+| Ziel | Lisa setzt ein geeignetes Test Design auf, um eine Hypothese zu prüfen. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Samples sind erstellt und ausgewählt <br> 2. Die Trainingsdaten sind ausgewählt. <br> 3. Die Testdaten sind ausgewählt. <br> 4. Die Netztopologie ist festgelegt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf |  |
+
+| Use Case Name | Training starten |
+| ----------- | ----------- |
+| Ziel | Das Training des ML Modells wird durchgeführt.. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das Forschungsdesign ist aufgesetzt <br> 2. Die Trainingsdaten sind eingelesen <br> 3. Die Hyperparameter sind festgelegt. |
+| Nachbedingung | 1. Das Training  ist erfolgreich durchgeführt. |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Das ML Modell wird entsprechend des Forschungsdesigns konfiguriert. <br> 2. Die Hyperparameter werden im ML Modell eingegeben. <br> 3. Das Training wird gestartet. |
+
+| Use Case Name | Trainingsdaten einlesen |
+| ----------- | ----------- |
+| Ziel | Die Trainingsdaten für das ML Modell sind eingelesen. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das Forschungsdesign ist aufgesetzt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die zuvor ausgewählten Trainingsdaten werden in das ML Modell eingelesen.  |
+
+| Use Case Name | Hyperparameter festlegen |
+| ----------- | ----------- |
+| Ziel | Lisa wählt die Hyperparameter für das ML Modell |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Trainings- und Testdaten sind ausgewählt. |
+| Nachbedingung | 1. Die Hyperparameter sind festgelegt |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Der Trainings- und Testdatensplit wird von Lisa festgelegt. <br> 2. Lisa legt die Lernrate des ML Modells fest. <br> 3. Lisa legt die Anzahl der Durchläufe des ML Modells fest. <br> 4.   |
+
+| Use Case Name | Resampling unbekannter Samples |
+| ----------- | ----------- |
+| Ziel | Das Resampling der unbekannten Samples liefert ein zufriedenstellendes Ergebnis. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das Training des ML Modells ist von Lisa erfolgreich durchgeführt worden. |
+| Nachbedingung | 1. Die Testdaten sind ausgewählt. <br> 2. Das ML Modell ist trainiert. |
+| Nachbedingung im Sonderfall | 1. Lisa muss einen erneuten Durchlauf des ML Modells mit angepasstem Forschungsdesign durchführen. |
+| Normalablauf | 1. Die als Testdaten ausgewählten Samples werden in das ML Modell gegeben. <br> 2. Das ML Modell resampelt die Testdaten. <br> 3. Das Resampling ist beendet. <br> 4. Lisa evaluiert die Zusammensetzung der Samples. <br> 5. Lisa fällt die Entscheidung, ob ein erneutes Durchlauf des ML Modells mit angepasstem Forschungsdesign stattfinden muss.|
+
+| Use Case Name | Resampling starten |
+| ----------- | ----------- |
+| Ziel | Der Track wird resampelt. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Das ML Modell ist trainiert. <br> 2. Die Testdaten sind eingelesen. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Das ML Modell wird gestartet. <br> 2. Die Samples werden neu sortiert.  |
+
+| Use Case Name | Testdaten einlesen |
+| ----------- | ----------- |
+| Ziel | Die Testdaten sind eingelesen. |
+| Akteure | Lisa |
+| Vorbedingung | 1. Die Testdaten sind ausgewählt. |
+| Nachbedingung |  |
+| Nachbedingung im Sonderfall |  |
+| Normalablauf | 1. Die eingelesenen Testdaten werden in das ML Modell eingelesen. |
+
+
+##  Sequenzdiagramm
+
+##  Klassendiagramm
