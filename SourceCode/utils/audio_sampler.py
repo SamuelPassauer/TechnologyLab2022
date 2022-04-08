@@ -5,6 +5,7 @@ import pydub
 from pydub import AudioSegment
 import os
 import random
+import csv
 
 class AudioSampler:
 
@@ -24,7 +25,7 @@ class AudioSampler:
                 track_loaded = self.load_track(track_path)
                 self.disassemble_track(track_loaded, disassembling_strategy, sampling_size, samples_folder)
             else:
-                print("[INFO] Samples for the track {} with a {} disassembling strategy and a sampling size of {} already exist.".format(track_path, disassembling_strategy, str(sampling_size)))
+                print("[INFO] Samples already exist for track: {} | {} disassembled | sampling size  {} ".format(track_path, disassembling_strategy, str(sampling_size)))
 
         print('[INFO] Disassembling finished.')
     
@@ -47,10 +48,10 @@ class AudioSampler:
         print("[INFO] Disassembling starts now.")
 
         if disassembling_strategy == 'equidistant':
-            sample_list = self.disassemble_equidistant(track, sampling_size)
+            sample_list, sample_length = self.disassemble_equidistant(track, sampling_size)
 
         elif disassembling_strategy == 'stochastic':
-            sample_list = self.disassemble_stochastic(track, sampling_size)
+            sample_list, sample_length = self.disassemble_stochastic(track, sampling_size)
 
         try:
             os.makedirs(self.path+samples_folder)
@@ -58,6 +59,7 @@ class AudioSampler:
             print("[ERROR] Creation of the directory {} failed".format(samples_folder))
         
         #Todo auslagern
+        sample_names = []
         counter = 1
         for sample in sample_list:
             if len(str(counter)) == 1:
@@ -68,11 +70,17 @@ class AudioSampler:
                 position = str(counter)
             
             components = samples_folder.split('/')
-            name = components[2]+'_'+components[3] + '_' + disassembling_strategy[0] + '_' + str(sampling_size) + '_'+position+'.mp3'
-            sample.export(self.path+samples_folder+'/sample_'+name,format="mp3")
+            sample_name = "/"+components[2]+'_'+components[3] + '_' + disassembling_strategy[0] + '_' + str(sampling_size) + '_'+position+'.mp3'
+            sample_names.append(sample_name)
+            sample.export(self.path+samples_folder+sample_name,format="mp3")
             counter+=1
 
-        # Todo tensor creation aufrufen und metadaten erstellen
+        samples_dict = dict(zip(sample_names, sample_length))
+
+        self.create_metadata(samples_dict)
+
+        # Todo tensor creation aufrufen 
+        
         
     def disassemble_equidistant(self, track, sampling_size) -> None:
         sample_list = []
@@ -86,7 +94,7 @@ class AudioSampler:
             sample_list.append(sample)
             start_cut = end_cut
         
-        return sample_list
+        return sample_list, [sample_length]*sampling_size
 
 
     def disassemble_stochastic(self, track, sampling_size) -> None:
@@ -110,10 +118,9 @@ class AudioSampler:
         one_percent = 100/random_numbers_sum
         sample_length = []
         for num in random_numbers:
-            sample_lenth = num*one_percent * 1000
-            sample_length.append(sample_lenth)
+            length = num*one_percent * 1000
+            sample_length.append(length)
 
-        print()
         # cuten
         cut_start = 0
         for length in sample_length:
@@ -122,12 +129,36 @@ class AudioSampler:
             sample_list.append(sample)
             cut_start+= length
 
-        return sample_list
+        return sample_list, sample_length
 
 
-    def create_metadata(self) -> None:
-        # ToDo Metadaten als csv
-        pass
+    def create_metadata(self, samples_dict) -> None:
+        file_path = 'data/metadata.csv'
+        
+        if os.path.exists(self.path+file_path):
+            pass
+        else:
+            header = ['sample_name', 'interpret', 'track_name', 'disassembling_strategy', 'sampling_size', 'position', 'length_ms']
+            with open(self.path+file_path, 'w') as f:
+                writer = csv.writer(f, delimiter=',', lineterminator='\n')
+                writer.writerow(header)
+
+        for sample_name in samples_dict:
+            components = sample_name.split('_')
+
+            interpret = components[0]
+            track_name = components[1]
+            disassembling_strategy = 'equidistant' if components[2] == 'e' else 'stochastic'
+            sampling_size = components[3]
+            position = components[4][:-4]
+            length_ms = samples_dict[sample_name]
+
+            new_row = [sample_name, interpret, track_name, disassembling_strategy, sampling_size, position, length_ms]
+
+            with open(self.path+file_path, 'a') as f:
+                writer = csv.writer(f, delimiter=',', lineterminator='\n')
+                writer.writerow(new_row)
+
 
     def create_tensor() -> None:
         # Todo
