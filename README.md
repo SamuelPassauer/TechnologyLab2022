@@ -39,3 +39,7 @@ Die Entwicklung des Zielsystems orientiert sich stark an den im Forschungsansatz
 
 ## Installations- und Bedienungsanleitung
 Informationen zu Betrieb und Installation des Programmcodes finden sich im Ordner Dokumentation im File [Installations- und Bedienungsanleitung](https://github.com/JenniferHammen/TechnologyLab2022/blob/main/Dokumentation/Installations-%20und%20Bedienungsanleitung.md).
+
+## Coaching
+Während des Projekts finden Coachings durch die Betreuenden Professoren statt. Die dabei entstehenden Dokumentationen werden ebenfalls im Repository unter [Protokolle](https://github.com/JenniferHammen/TechnologyLab2022/tree/main/Protokolle) abgelegt.
+
