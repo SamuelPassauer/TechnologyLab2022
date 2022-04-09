@@ -10,32 +10,32 @@ Das Projekt möchte sich einer Problemlösung über die folgenden Forschungsfrag
 
 Diese Fragen sind im Projektverlauf zu beantworten und stellen somit den Projektrahmen auf. Die Entwicklung des Zielsystems und damit die sukzessive Beantwortung der Forschungsfragen und Abarbeitung der Problemstellung erfolgt in Rahmen von Challenges. Jede Challenge stellt dabei einen Meilenstein des Projekts dar. 
 
-#### Challenge 1
+### Challenge 1
 Die erste Challenge beschäftigt sich mit den Trainigsdaten für das System. Es soll eine geeignete Infrastruktur bereitgestellt werden, um Tracks in Samples zu zerlegen und so einen synthetischen Trainingsdatensatz herzustellen. Die Daten müssen zusätzlich in eine Form überführt werden, um sie einem Neuronalen netz zugänglich zu machen.
 
-#### Challenge 2
+### Challenge 2
 In dieser Challenge geht es darum, dass ein ANN trainiert wird, welches abschließend in der Lage sein soll, Samples wieder zu einem Track zusammenzufügen, welche dem ANN bekannt sind.
 
-#### Challenge 3
+### Challenge 3
 In der letzten Challenge soll versucht werden, aufbauend auf der vorherigen Challenge, ein Resampling von bisher unbekannten Samples zu hörbarer Musik durch das ANN zu ermöglichen.  
 
-Somit wird durch das strukturierte Vorgehen, eine gezielte wissenschaftliche Annäherung an das Problemfeld ermöglicht.
+Somit wird durch das strukturierte Vorgehen, eine gezielte wissenschaftliche Annäherung an das Problemfeld ermöglicht. Das dazu notwendige theoretische Hintergrundwissen findet sich im [Wiki](https://github.com/JenniferHammen/TechnologyLab2022/wiki) dieses GitHub Repositorys.
 
 ## Entwicklungsansatz
 Die Entwicklung des Zielsystems orientiert sich stark an den im Forschungsansatz vorgestellten Challenges. Zusätzlich erfolgt jedoch bereits in den früheren Phasen ein Vorausplanen der notwendigen Infrastruktur der Sandbox, um dann eine gezielte Entwicklung und eine Konzentration auf die forschenden Aspekte der Erstellung des Zielsystems zu ermöglichen. Daher ergeben sich in den Challenges die folgenden Meilensteine für die Implementation und Planung.
 
-#### Meilenstein 1
+### Meilenstein 1
 - Technische Implementierung von Challenge 1
 - Systementwurf für Challenge 2 & 3
 - Struktur der Daten
 
-#### Meilenstein 2
+### Meilenstein 2
 - Prototyp für Challenge 2
 
-#### Meilenstein 3
+### Meilenstein 3
 - Prototyp für Challenge 3
 
-*Anmerkung: Der im Rahmen von Meilenstein 1 angefertigte Systementwurf, bestehend aus Anforderungsanalyse, User Story mit Use Case Diagrammen, Sequenzflussdiagramm und Klassendiagramm sowie eine Beschreibung der Daten- und Ordnerstruktur der Trainingsdaten befindet sich im Ordner Dokumentation.*
+*Anmerkung: Der im Rahmen von Meilenstein 1 angefertigte Systementwurf, bestehend aus Anforderungsanalyse, User Story mit Use Case Diagrammen, Sequenzflussdiagramm und Klassendiagramm sowie eine Beschreibung der Daten- und Ordnerstruktur der Trainingsdaten befindet sich im Ordner [Dokumentation](https://github.com/JenniferHammen/TechnologyLab2022/tree/main/Dokumentation).*
 
 ## Installations- und Bedienungsanleitung
-Informationen zu Betrieb und Installation des Programmcodes finden sich im Ordner Dokumentation im File Installations- und Bedienungsanleitung.
+Informationen zu Betrieb und Installation des Programmcodes finden sich im Ordner Dokumentation im File [Installations- und Bedienungsanleitung](https://github.com/JenniferHammen/TechnologyLab2022/blob/main/Dokumentation/Installations-%20und%20Bedienungsanleitung.md).
